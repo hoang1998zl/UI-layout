@@ -635,7 +635,7 @@ export default function UI04_RiskCompliance() {
           backdropFilter: "blur(6px)",
         }}
       >
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{  margin: "0 auto", padding: "0 16px" }}>
           <div
             style={{
               display: "flex",
@@ -692,7 +692,7 @@ export default function UI04_RiskCompliance() {
       {/* Layout */}
       <div
         style={{
-          maxWidth: 1200,
+          
           margin: "0 auto",
           padding: "16px",
           display: "grid",

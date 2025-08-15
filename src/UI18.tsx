@@ -532,7 +532,7 @@ export default function UI18_TaxCompliance() {
     } else {
       csv = "Metric,Amount(VND)\n";
       csv += `PBT,${Math.round(CITX.pbt)}\n`;
-      csv += `Taxable income,${Math.round(CITX.tAxable || CITX.taxable)}\n`;
+      csv += `Taxable income,${Math.round(CITX.taxable)}\n`;
       csv += `CIT @ ${Math.round(CITX.rate * 100)}%,${Math.round(CITX.cit)}\n`;
     }
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
@@ -653,7 +653,7 @@ export default function UI18_TaxCompliance() {
           backdropFilter: "blur(6px)",
         }}
       >
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{  margin: "0 auto", padding: "0 16px" }}>
           <div
             style={{
               display: "flex",
@@ -699,7 +699,7 @@ export default function UI18_TaxCompliance() {
       {/* Layout */}
       <div
         style={{
-          maxWidth: 1200,
+          
           margin: "0 auto",
           padding: "16px",
           display: "grid",

@@ -677,6 +677,47 @@ export default function UI16_Consolidation_v2_PDF() {
     body: React.ReactNode;
   } | null>(null);
 
+  // KPI Component
+  function KPI({
+    title,
+    value,
+    hint,
+  }: {
+    title: string;
+    value: string;
+    hint?: string;
+  }) {
+    return (
+      <div
+        style={{
+          border: "1px solid #e5e5e5",
+          borderRadius: 16,
+          background: "#fff",
+          padding: 12,
+        }}
+      >
+        <div
+          style={{
+            fontSize: 12,
+            color: "#6b7280",
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
+          }}
+        >
+          {title}
+        </div>
+        <div style={{ marginTop: 4, fontSize: 22, fontWeight: 600 }}>
+          {value}
+        </div>
+        {hint ? (
+          <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 2 }}>
+            {hint}
+          </div>
+        ) : null}
+      </div>
+    );
+  }
+
   React.useEffect(() => {
     setFxAvg(FX_BASE[period].USD.avg);
     setFxClose(FX_BASE[period].USD.close);
@@ -906,7 +947,7 @@ export default function UI16_Consolidation_v2_PDF() {
   }
 
   // Variance
-  const priorP: PeriodM = period === "2025-08" ? "2025-07" : "2025-08";
+  const priorPeriod: PeriodM = period === "2025-08" ? "2025-07" : "2025-08";
   const varData = [
     { key: "Revenue", delta: cur.pl.rev - prev.pl.rev },
     { key: "COGS", delta: -(cur.pl.cogs - prev.pl.cogs) },
@@ -964,7 +1005,7 @@ export default function UI16_Consolidation_v2_PDF() {
           backdropFilter: "blur(6px)",
         }}
       >
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{  margin: "0 auto", padding: "0 16px" }}>
           <div
             style={{
               display: "flex",
@@ -1010,7 +1051,7 @@ export default function UI16_Consolidation_v2_PDF() {
       {/* Layout */}
       <div
         style={{
-          maxWidth: 1200,
+          
           margin: "0 auto",
           padding: "16px",
           display: "grid",
@@ -1487,7 +1528,7 @@ export default function UI16_Consolidation_v2_PDF() {
               }}
             >
               <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 8 }}>
-                Variance vs Prior ({priorP} → {period})
+                Variance vs Prior ({priorPeriod} → {period})
               </div>
               <table
                 style={{
@@ -1871,45 +1912,6 @@ export default function UI16_Consolidation_v2_PDF() {
         <td style={tdStyle(true)}>{name}</td>
         <td style={{ ...tdStyle(), textAlign: "right" }}>{fmtVND(amt)}</td>
       </tr>
-    );
-  }
-  function KPI({
-    title,
-    value,
-    hint,
-  }: {
-    title: string;
-    value: string;
-    hint?: string;
-  }) {
-    return (
-      <div
-        style={{
-          border: "1px solid #e5e5e5",
-          borderRadius: 16,
-          background: "#fff",
-          padding: 12,
-        }}
-      >
-        <div
-          style={{
-            fontSize: 12,
-            color: "#6b7280",
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-          }}
-        >
-          {title}
-        </div>
-        <div style={{ marginTop: 4, fontSize: 22, fontWeight: 600 }}>
-          {value}
-        </div>
-        {hint ? (
-          <div style={{ marginTop: 4, fontSize: 12, color: "#6b7280" }}>
-            {hint}
-          </div>
-        ) : null}
-      </div>
     );
   }
 }

@@ -145,7 +145,7 @@ type Requisition = {
   dept: Dept;
   location: Location;
   grade: Grade;
-  headcount: int;
+  headcount: number;
   opened: string;
   status: ReqStatus;
   budget: number;
@@ -202,7 +202,7 @@ type Candidate = {
   reqId: string;
   name: string;
   stage: CandStage;
-  days: int;
+  days: number;
 };
 const CANDS: Candidate[] = [
   {
@@ -707,7 +707,7 @@ export default function UI08_HRWorkforce() {
           backdropFilter: "blur(6px)",
         }}
       >
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{  margin: "0 auto", padding: "0 16px" }}>
           <div
             style={{
               display: "flex",
@@ -753,7 +753,7 @@ export default function UI08_HRWorkforce() {
       {/* Layout */}
       <div
         style={{
-          maxWidth: 1200,
+          
           margin: "0 auto",
           padding: "16px",
           display: "grid",

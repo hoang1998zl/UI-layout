@@ -15,6 +15,38 @@ import React from "react";
  *  • Drawer details; Self-tests verify formulas & integrity
  */
 
+// KPI Component
+interface KPIProps {
+  title: string;
+  value: string | number;
+  hint: string;
+}
+
+const KPI: React.FC<KPIProps> = ({ title, value, hint }) => (
+  <div
+    style={{
+      backgroundColor: "#f8f9fa",
+      padding: "15px",
+      borderRadius: "6px",
+      textAlign: "center",
+      minHeight: "90px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    }}
+  >
+    <div style={{ fontSize: "11px", color: "#666", marginBottom: "5px" }}>
+      {title}
+    </div>
+    <div style={{ fontSize: "18px", fontWeight: "bold", color: "#333", marginBottom: "5px" }}>
+      {value}
+    </div>
+    <div style={{ fontSize: "9px", color: "#999" }}>
+      {hint}
+    </div>
+  </div>
+);
+
 /* ============ Types & Demo Data ============ */
 type Company = "co1" | "co2";
 type Period = "2025-Q1" | "2025-Q2" | "2025-Q3";
@@ -594,7 +626,7 @@ export default function UI06_FinanceCash() {
           backdropFilter: "blur(6px)",
         }}
       >
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{  margin: "0 auto", padding: "0 16px" }}>
           <div
             style={{
               display: "flex",
@@ -648,7 +680,7 @@ export default function UI06_FinanceCash() {
       {/* Layout */}
       <div
         style={{
-          maxWidth: 1200,
+          
           margin: "0 auto",
           padding: "16px",
           display: "grid",
